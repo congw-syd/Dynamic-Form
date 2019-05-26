@@ -1,5 +1,7 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import TextInput from './TextInput';
+import Select from './Select';
+import NumInput from './NumInput';
 import './DynamicForm.css';
 
 export default class dynamicForm extends React.Component{
@@ -11,12 +13,13 @@ export default class dynamicForm extends React.Component{
 		e.preventDefault();
 		if(this.props.onSubmit) this.props.onSubmit(this.state);
 	}
-	onChange = (e,key)=>{
+	onChange = (e)=>{
 		this.setState({
-			[key]: this[key].value
+			[e.target.id]: e.target.value
 		})
 	}
-	renderForm = () =>{
+	
+	/*renderForm = () =>{
 		let model = this.props.model;
 		let formUI = model.map((m)=>{
 			let key = m.id;
@@ -45,7 +48,53 @@ export default class dynamicForm extends React.Component{
 			
 		});
 		return formUI;
+	}*/
+	renderForm = () =>{
+		let model = this.props.model;
+		let formUI = model.map((m)=>{
+			if(m.type === 'textInput'){
+				return (
+					<TextInput
+						key = {m.id+'i'}
+						id = {m.id}
+						name = {m.displayName}
+						required = {m.isRequired}
+						display = {m.display}
+						onChange = {this.onChange}
+					/>
+				);
+			}
+			if(m.type === 'select'){
+				return(
+					<Select
+						key = {m.id+'i'}
+						id = {m.id}
+						name = {m.displayName}
+						required = {m.isRequired}
+						display = {m.display}
+						options = {m.options}
+						onChange = {this.onChange}
+					/>
+				);
+			}
+			if(m.type === 'numberInput'){
+				return(
+					<NumInput
+						key = {m.id+'i'}
+						id = {m.id}
+						name = {m.displayName}
+						required = {m.isRequired}
+						display = {m.display}
+						unitOfMeasure = {m.unitOfMeasure}
+						max = {m.bounds.upperLimit}
+						onChange = {this.onChange}
+					/>
+				);
+			}
+		});
+		return formUI;
 	}
+
 	render(){
 		let title = this.props.title || 'Dyanmic Form';
 

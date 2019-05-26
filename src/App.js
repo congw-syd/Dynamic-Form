@@ -12,7 +12,7 @@ class App extends Component {
   onSubmit = (model) => {
     console.log(JSON.stringify(model));
     this.setState({
-      data: [ ...this.state.data, model]
+      data: [ model, ...this.state.data]
     })
   }
   render(){
