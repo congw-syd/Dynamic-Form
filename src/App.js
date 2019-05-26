@@ -1,26 +1,94 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {Component} from 'react';
+import DynamicForm from './components/DynamicForm';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  state = {
+    data: [
+      {name: 'test', gender: 1, weight: 70, height: 175, bmi: 24.2},
+      {name: 'testt', gender: 2, weight: 7, height: 75, bmi: 34.2}
+    ]
+  }
+  onSubmit = (model) => {
+    console.log(JSON.stringify(model));
+    this.setState({
+      data: [ ...this.state.data, model]
+    })
+  }
+  render(){
+    return (
+      <div className="App">
+        <DynamicForm 
+            title = "BMI"
+            model = {[
+              {
+                id: 'name',
+                displayName: 'Name',
+                type: 'textInput',
+                display: true,
+                isRequired: true
+              },
+              {
+                id: 'gender',
+                displayName: 'Gender',
+                type: 'select',
+                options: [
+                  {
+                    id: 1,
+                    name: 'Male',
+                    isDefault: true,
+                    sortOrder: 1
+                  },
+                  {
+                    id: 2,
+                    name: 'Female',
+                    isDefault: false,
+                    sortOrder: 2
+                  }
+                ],
+                display: true,
+                isRequired: false
+              },
+              {
+                id: 'weight',
+                displayName: 'Weight',
+                unitOfMeasure: 'kg',
+                type: 'numberInput',
+                bounds: {
+                  upperLimit: 1000,
+                },
+                display: true,
+                isRequired: true
+              },
+              {
+                id: 'height',
+                displayName: 'Height',
+                unitOfMeasure: 'cm',
+                type: 'numberInput',
+                bounds: {
+                  upperLimit: 300,
+                },
+                display: true,
+                isRequired: true
+              },
+              {
+                id: 'bmi',
+                displayName: 'BMI',
+                unitOfMeasure: 'kg/m2',
+                type: 'numberInput',
+                bounds: {
+                  upperLimit: 100,
+                },
+                display: false,
+                isRequired: false
+              },
+            ]}
+            onSubmit = { (model)=>{this.onSubmit(model)}}
+        />
+      </div>
+    );
+  }
+    
 }
 
 export default App;
