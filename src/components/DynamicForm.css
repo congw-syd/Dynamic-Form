@@ -8,7 +8,7 @@ body{
 .container{
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
+	justify-center: center;
 	align-items: center;
 	height:100vh;
 }
