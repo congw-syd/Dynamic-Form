@@ -1,16 +1,23 @@
 @import url('https://fonts.googleapis.com/css?family=Bree+Serif&display=swap');
 
 body{
-	background:#2d3b36 url(http://andstud.io/wp-content/uploads/2014/03/blurrrr2.jpg)no-repeat center center fixed;
-	background-size: cover;
+	background: linear-gradient(to right, rgb(68, 14, 89), rgb(255, 197, 171));
 	color: white;
 	font-family: 'Bree Serif', cursive;
+}
+.container{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	height:100vh;
 }
 .main{
 	display: flex;
 	justify-content: center;
 	flex-direction: column;
 	align-items: center;
+
 }
 h1{
 	text-shadow: 1px 1px 0 rgba(0,0,0,0.4);
