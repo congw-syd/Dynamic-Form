@@ -10,6 +10,12 @@ class App extends Component {
     ]
   }
   onSubmit = (model) => {
+    if(model.hasOwnProperty('height')){
+      let bmi = model.weight/(model.height*model.height)*10000;
+      bmi = bmi.toFixed(1);
+      Object.assign(model,{bmi});
+    }
+    
     console.log(JSON.stringify(model));
     this.setState({
       data: [ model, ...this.state.data]
@@ -19,8 +25,8 @@ class App extends Component {
     return (
       <div className="App">
         <DynamicForm 
-            title = "BMI"
-            model = {[
+            title = "Head-Circumference"
+           /* model = {[
               {
                 id: 'name',
                 displayName: 'Name',
@@ -82,6 +88,47 @@ class App extends Component {
                 display: false,
                 isRequired: false
               },
+            ]}*/
+            model = {[
+              {
+                id: 'name',
+                displayName: 'Name',
+                type: 'textInput',
+                display: true,
+                isRequired: true
+              },
+              {
+                id: 'gender',
+                displayName: 'Gender',
+                type: 'select',
+                options: [
+                  {
+                    id: 1,
+                    name: 'Male',
+                    isDefault: true,
+                    sortOrder: 1
+                  },
+                  {
+                    id: 2,
+                    name: 'Female',
+                    isDefault: false,
+                    sortOrder: 2
+                  }
+                ],
+                display: true,
+                isRequired: false
+              },
+              {
+                id: 'head-circumference',
+                displayName: 'Head Circumference',
+                unitOfMeasure: 'cm',
+                type: 'numberInput',
+                bounds: {
+                  upperLimit: 1000,
+                },
+                display: true,
+                isRequired: true
+              }
             ]}
             onSubmit = { (model)=>{this.onSubmit(model)}}
         />
