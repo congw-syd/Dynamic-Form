@@ -6,6 +6,13 @@ body{
 	color: white;
 	font-family: 'Bree Serif', cursive;
 }
+.container{
+	display: flex;
+	flex-direction: column;
+	justify-center: center;
+	align-items: center;
+	height:100vh;
+}
 .main{
 	display: flex;
 	justify-content: center;
