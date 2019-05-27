@@ -23,8 +23,8 @@ class App extends Component {
     return (
       <div className="App">
         <DynamicForm 
-            title = "Head-Circumference"
-           /* model = {[
+            title = "BMI"
+            model = {[
               {
                 id: 'name',
                 displayName: 'Name',
@@ -86,8 +86,8 @@ class App extends Component {
                 display: false,
                 isRequired: false
               },
-            ]}*/
-            model = {[
+            ]}
+            /*model = {[
               {
                 id: 'name',
                 displayName: 'Name',
@@ -127,7 +127,7 @@ class App extends Component {
                 display: true,
                 isRequired: true
               }
-            ]}
+            ]}*/
             onSubmit = { (model)=>{this.onSubmit(model)}}
         />
       </div>

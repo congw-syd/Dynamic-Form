@@ -6,9 +6,6 @@ import './DynamicForm.css';
 
 export default class dynamicForm extends React.Component{
 	state = {};
-	constructor(props){
-		super(props);
-	}
 	onSubmit = (e) => {
 		e.preventDefault();
 		if(this.props.onSubmit) this.props.onSubmit(this.state);
@@ -33,7 +30,7 @@ export default class dynamicForm extends React.Component{
 					/>
 				);
 			}
-			if(m.type === 'select'){
+			else if(m.type === 'select'){
 				return(
 					<Select
 						key = {m.id+'i'}
@@ -46,7 +43,7 @@ export default class dynamicForm extends React.Component{
 					/>
 				);
 			}
-			if(m.type === 'numberInput'){
+			else if(m.type === 'numberInput'){
 				return(
 					<NumInput
 						key = {m.id+'i'}
@@ -59,6 +56,9 @@ export default class dynamicForm extends React.Component{
 						onChange = {this.onChange}
 					/>
 				);
+			}
+			else{
+				return (<div />);
 			}
 		});
 		return formUI;
