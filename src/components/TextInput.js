@@ -1,22 +1,5 @@
 import React from "react";
-/*
-return (
-					<div key={m.id} className = 'form-content'>
-						<label className = 'form-label'
-							key = {m.id+'1'}
-							htmlFor = {m.id}>
-							{m.displayName}
-						</label>
-						<input
-							required = {m.isRequired}
-							ref = {(key)=>{this[m.id]=key}}
-							className = 'form-input'
-							type = {m.type}
-							key = {'i'+m.id}
-							onChange = {(e)=>{this.onChange(e,key)}}
-						/>
-					</div>
-				);*/
+
 const TextInput = ({ id, name, required, onChange, display}) => {
 	if( display === true){
 		if(id === "name"){

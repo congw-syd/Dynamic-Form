@@ -12,7 +12,7 @@ export default class dynamicForm extends React.Component{
 	}
 	onChange = (e)=>{
 		this.setState({
-			[e.target.id]: e.target.value
+			[e.target.id]: e.target.value 
 		})
 	}
 	renderForm = () =>{
@@ -39,6 +39,7 @@ export default class dynamicForm extends React.Component{
 						required = {m.isRequired}
 						display = {m.display}
 						options = {m.options}
+						defaultOption = {m.options.filter(opt=>opt.isDefault)}
 						onChange = {this.onChange}
 					/>
 				);
