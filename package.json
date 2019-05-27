@@ -1,6 +1,7 @@
 {
   "name": "testform",
   "version": "0.1.0",
+  "homepage":"https://congw-syd.github.io/Dynamic-Form",
   "private": true,
   "dependencies": {
     "react": "^16.8.6",

@@ -5,8 +5,7 @@ import './App.css';
 class App extends Component {
   state = {
     data: [
-      {name: 'test', gender: 1, weight: 70, height: 175, bmi: 24.2},
-      {name: 'testt', gender: 2, weight: 7, height: 75, bmi: 34.2}
+      {name: 'test', gender: 1, weight: 70, height: 175, bmi: 24.2}
     ]
   }
   onSubmit = (model) => {
@@ -15,7 +14,6 @@ class App extends Component {
       bmi = bmi.toFixed(1);
       Object.assign(model,{bmi});
     }
-    
     console.log(JSON.stringify(model));
     this.setState({
       data: [ model, ...this.state.data]
